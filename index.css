@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.player_cover {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background-image: url("https://images.unsplash.com/photo-1600627225432-82de96999068?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+
+  background-position: center;
+  background-size: cover;
+  animation: hueSatRotate 18s infinite linear;
+}
+@keyframes hueSatRotate {
+  0% {
+    filter: hue-rotate(0deg) saturate(100%);
+  }
+  50% {
+    filter: hue-rotate(180deg) saturate(300%);
+  }
+  100% {
+    filter: hue-rotate(359deg) saturate(100%);
+  }
+}
+
+.player_cover:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 700%;
+  height: 100%;
+  background: inherit;
+  mix-blend-mode: screen;
+  animation: contrastRotate 18s infinite linear;
+}
+@keyframes contrastRotate {
+  50% {
+    filter: contrast(800%);
+  }
+  100% {
+    filter: contrast(100%);
+  }
+}
+
+/* Optional spiral overlay */
+
+.player_cover-spiral {
+  display: block;
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  z-index: 3;
+  top: -50%;
+  left: -50%;
+
+  /* Blur and opacity set to taste */
+  filter: blur(20px);
+  opacity: 0.85;
+
+  /* Best two blend mode options */
+  mix-blend-mode: screen;
+  fill: #fff;
+  mix-blend-mode: multiply;
+  fill: #000;
+
+  animation: rotation 120s infinite linear;
+}
+@keyframes rotation {
+  to {
+    transform: rotate(359deg);
+  }
+}
